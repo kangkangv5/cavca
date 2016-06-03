@@ -26,3 +26,4 @@ base_songs_id =read_db_songs_another()
 web_songs_id = read_web_songs_another()
 
 web_songs_id['SongId']  = web_songs_id['SongId'].map(lambda x:x.strip("mkv"))
+#web_songs_id['SongId']  = web_songs_id['SongId'].str.extract('(\d*)')
