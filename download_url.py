@@ -1,5 +1,8 @@
 #coding:utf-8
 """
+Author:kangkang 
+Date:2016.06.06
+说明：
 根据新增的歌曲ID（主键），获取下载地址的url。
 
 /music/finishdownload?
@@ -40,11 +43,15 @@ def save_urls(tidcode):
 	request = rq.get(download_url)
 	#print request.text
 	download_json = json.loads(request.content)
+	#print download_json
 	try:
 		mkv_download=download_json['downloadurl']
+		tkid = download_json['tkid']
 		DownLoadQath = os.path.split(os.path.realpath(__file__))[0]+os.sep+'download_song_urls.txt'
 		with open(DownLoadQath,'a+')as f:
 			f.write(mkv_download)
+			f.write(',')
+			f.write(tkid)
 			f.write('\n')
 	except Exception:
 		print download_json
